@@ -1,0 +1,20 @@
+{
+  "name": "electron-crawl",
+  "version": "1.0.0",
+  "description": "crawl for css/js",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "crawl for css/js"
+  ],
+  "devDependencies": {
+    "electron-packager": "^7.3.0",
+    "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "request": "2.40.0",
+    "cheerio": "0.17.0"
+  }
+}
