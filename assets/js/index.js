@@ -12,6 +12,11 @@ keywordInput.addEventListener("keydown", function(event) {
         generateBtn.click();
     }
 });
+urlInput.addEventListener("keydown", function(event) {
+    if (event.keyCode == 13) {
+        generateBtn.click();
+    }
+});
 
 function generateHandler() {
     var urlString = urlInput.value;

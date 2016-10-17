@@ -1,13 +1,13 @@
 {
-  "name": "lvmama-cache-crawler",
+  "name": "lvmama-crawler",
   "version": "1.0.0",
-  "description": "crawl css/js via lvmama",
+  "description": "crawl css/js links from lvmama",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "keywords": [
-    "crawl css/js via lvmama"
+    "crawl css/js links from lvmama"
   ],
   "devDependencies": {
     "electron-packager": "^7.3.0",
