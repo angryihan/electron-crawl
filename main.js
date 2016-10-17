@@ -12,7 +12,7 @@ function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
-    minimizable: false,
+    minimizable: true,
     maximizable: false,
     resizable: false,
     fullscreenable: false,
