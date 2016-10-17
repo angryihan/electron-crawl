@@ -2,25 +2,29 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>缓存神器-Muscle Made</title>
-    <link rel="stylesheet" href="index.css">
+    <title>缓存爬虫-Muscle Made</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 <body>
 
 <div class="wrap">
     <dl>
         <dt>网址：</dt>
-        <dd><input type="text" id="url" placeholder="请输入网址" value="http://www.lvmama.com"></dd>
+        <dd><input type="text" id="url" placeholder="请输入网址，多个以逗号分隔" value="http://www.lvmama.com"></dd>
     </dl>
     <dl>
         <dt>关键词：</dt>
-        <dd><input type="text" id="keyword" placeholder="请输入关键词"></dd>
+        <dd><input type="text" id="keyword" placeholder="请输入关键词" value=""></dd>
     </dl>
+    <!-- <dl>
+        <dt></dt>
+        <dd><label><input type="checkbox" id="isChannel"/>频道页</label></dd>
+    </dl> -->
     <p class="btn-part">
         <a id="generate">一键获取</a>
     </p>
     <p>
-        <textarea id="result" placeholder="链接"></textarea>
+        <textarea id="result" placeholder="提示：1.网址输入框支持多个网址输入，以逗号分隔 2.网址输入框为空表示搜索全站频道页"></textarea>
     </p>
 </div>
 
@@ -28,6 +32,6 @@
 
 <script>
     // You can also require other files to run in this process
-    require('./index.js')
+    require('./assets/js/index.js')
 </script>
 </html>

@@ -1,13 +1,13 @@
 {
-  "name": "electron-crawl",
+  "name": "lvmama-cache-crawler",
   "version": "1.0.0",
-  "description": "crawl for css/js",
+  "description": "crawl css/js via lvmama",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "keywords": [
-    "crawl for css/js"
+    "crawl css/js via lvmama"
   ],
   "devDependencies": {
     "electron-packager": "^7.3.0",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "request": "2.40.0",
-    "cheerio": "0.17.0"
+    "cheerio": "0.17.0",
+    "async": "*"
   }
 }
