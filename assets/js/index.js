@@ -4,6 +4,8 @@ var generateBtn = document.querySelector("#generate");
 var urlInput = document.querySelector("#url");
 var keywordInput = document.querySelector("#keyword");
 var result = document.querySelector("#result");
+var inputList = document.querySelectorAll(".JS-input");
+
 // var channelCheckBox = document.querySelector("#isChannel");
 
 var lvmamaCrawler = {
@@ -14,15 +16,12 @@ var lvmamaCrawler = {
     bindEvents: function(){
         var self = this;
         generateBtn.addEventListener("click", self.generateHandler);
-        keywordInput.addEventListener("keydown", function(event) {
-            if (event.keyCode == 13) {
-                self.generateHandler();
-            }
-        });
-        urlInput.addEventListener("keydown", function(event) {
-            if (event.keyCode == 13) {
-                self.generateHandler();
-            }
+        inputList.forEach(function(input){
+            input.addEventListener("keydown", function(event) {
+                if (event.keyCode == 13) {
+                    self.generateHandler();
+                }
+            });
         });
     },
     generateHandler: function(){
@@ -33,8 +32,8 @@ var lvmamaCrawler = {
             result.value = '请输入关键词';
         } else {
             result.value = '获取中，请稍候……';
-            crawler.getLinks(urlString, keyword, function(res){
-                result.value = res;
+            crawler.getLinks(urlString, keyword, function(resultText){
+                result.value = resultText;
             });
         }
     }
