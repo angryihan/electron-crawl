@@ -2,7 +2,7 @@
 
 /*reset*/
 
-body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, code, tr, th, td, hr, menu {
+body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, code, tr, th, td, hr, menu, button {
     margin: 0;
     padding: 0
 }
@@ -66,7 +66,8 @@ ol, ul {
     overflow: hidden;
     margin-bottom: 15px;
 }
-.btn-part a {
+.btn-part button {
+    font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
     vertical-align: top;
     text-align: center;
     display: block;
@@ -88,13 +89,17 @@ ol, ul {
     background: -moz-linear-gradient(top, white, #f8f8f8);
     background: linear-gradient(to bottom, white, #f8f8f8);
 }
-.btn-part a:hover {
+.btn-part button:hover {
     color: #666666;
     background: #F5F5F5;
     text-decoration: none;
     background: -webkit-linear-gradient(top, whitesmoke, whitesmoke);
     background: -moz-linear-gradient(top, whitesmoke, whitesmoke);
     background: linear-gradient(to bottom, whitesmoke, whitesmoke);
+}
+.btn-part button:focus {
+    outline: none;
+    border-color: #75aeff;
 }
 dl {
     font-family: "Arial", "PingFang SC", "Microsoft Yahei", "SimSun", sans-serif;

@@ -7,7 +7,6 @@ var urlInput = document.querySelector("#url");
 var keywordInput = document.querySelector("#keyword");
 var result = document.querySelector("#result");
 var inputList = document.querySelectorAll(".JS-input");
-
 // var channelCheckBox = document.querySelector("#isChannel");
 
 var lvmamaCrawler = {
@@ -28,11 +27,13 @@ var lvmamaCrawler = {
         });
     },
     generateHandler: function() {
+        generateBtn.blur();
         var urlString = urlInput.value;
         var keyword = keywordInput.value;
         // var isChannel = channelCheckBox.checked;
         if (!keyword) {
             result.value = '请输入关键词';
+            keywordInput.focus();
         } else {
             result.value = '获取中，请稍候……';
             crawler.getLinks(urlString, keyword, function(resultText) {
@@ -41,6 +42,7 @@ var lvmamaCrawler = {
         }
     },
     copyHandler: function() {
+        copyBtn.blur();
         clipboard.writeText(result.value);
     }
 }

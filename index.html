@@ -9,15 +9,15 @@
 <body>
     <div class="wrap">
         <dl>
-            <dt>网址：</dt>
+            <dt><label for="url">网址：</label></dt>
             <dd>
-                <input type="text" class="JS-input" id="url" placeholder="请输入网址" value="http://www.lvmama.com">
+                <input type="text" class="JS-input" id="url" name="url" placeholder="请输入网址" value="http://www.lvmama.com">
             </dd>
         </dl>
         <dl>
-            <dt>关键词：</dt>
+            <dt><label for="keyword">关键词：</label></dt>
             <dd>
-                <input type="text" class="JS-input" id="keyword" placeholder="请输入关键词" value="">
+                <input type="text" class="JS-input" id="keyword" name="keyword" placeholder="请输入关键词" value="">
             </dd>
         </dl>
         <!-- <dl>
@@ -25,8 +25,8 @@
         <dd><label><input type="checkbox" id="isChannel"/>频道页</label></dd>
     </dl> -->
         <p class="btn-part">
-            <a id="generate">一键获取</a>
-            <a id="copy">一键复制</a>
+            <button type="button" id="generate">一键获取</button>
+            <button type="button" id="copy">一键复制</button>
         </p>
         <p>
             <textarea id="result"></textarea>
