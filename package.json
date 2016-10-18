@@ -1,25 +1,25 @@
 {
-  "name": "lvmama-crawler",
-  "version": "1.0.0",
-  "description": "crawl css/js links from lvmama",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "pack-mac": "electron-packager . lvmamaCrawler --asar.unpack=protocol-link.html --overwrite --platform=darwin --arch=x64 --icon=assets/app-icon/mac/app.icns --out=dist",
-    "pack-win": "electron-packager . lvmamaCrawler --asar.unpack=protocol-link.html --overwrite --platform=win32 --arch=x64 --icon=assets/img/app.ico --out=dist",
-    "pack-linux": "electron-packager . lvmamaCrawler --asar.unpack=protocol-link.html --overwrite --platform=linux --arch=x64 --out=dist",
-    "package": "npm run pack-mac && npm run pack-win && npm run pack-linux"
-  },
-  "keywords": [
-    "crawler"
-  ],
-  "devDependencies": {
-    "electron-packager": "^7.3.0",
-    "electron-prebuilt": "^1.2.0"
-  },
-  "dependencies": {
-    "request": "2.40.0",
-    "cheerio": "0.17.0",
-    "async": "*"
-  }
+    "name": "lvmama-crawler",
+    "version": "2.0.0",
+    "description": "crawl css/js links from lvmama",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "pack-mac": "electron-packager . lvmamaCrawler --asar.unpack=protocol-link.html --overwrite --platform=darwin --arch=x64 --icon=assets/app-icon/mac/app.icns --out=dist",
+        "pack-win": "electron-packager . lvmamaCrawler --asar.unpack=protocol-link.html --overwrite --platform=win32 --arch=x64 --icon=assets/img/app.ico --out=dist",
+        "pack-linux": "electron-packager . lvmamaCrawler --asar.unpack=protocol-link.html --overwrite --platform=linux --arch=x64 --out=dist",
+        "package": "npm run pack-mac && npm run pack-win && npm run pack-linux"
+    },
+    "keywords": [
+        "crawler"
+    ],
+    "devDependencies": {
+        "electron-packager": "^7.3.0",
+        "electron-prebuilt": "^1.2.0"
+    },
+    "dependencies": {
+        "request": "2.40.0",
+        "cheerio": "0.17.0",
+        "async": "*"
+    }
 }
