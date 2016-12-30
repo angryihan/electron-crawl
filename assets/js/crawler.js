@@ -26,12 +26,11 @@ module.exports = {
 
 function crawlLinks(url, callback) {
     option.url = url;
-    let pattern = new RegExp("(pic\.lvmama\.com.*" + keyword + ")|(.*\.lvjs\.com\.cn.*" + keyword + ")");
+    let pattern = new RegExp("(pic\.lvmama\.com.*" + keyword + ")|(s\\d\.lvjs\.com\.cn.*" + keyword + ")");
     request(option, function(error, res, body) {
         if (!error && res.statusCode == 200) {
             let $ = cheerio.load(body);
             let $resources = $('link[rel="stylesheet"], script');
-            linkArray = [];
             $resources.each(function(index, ele) {
                 let link = $(ele).attr('href') ? $(ele).attr('href') : $(ele).attr('src');
                 if (pattern.test(link)) {
@@ -54,7 +53,7 @@ function toText(arr) {
 }
 
 function generateAllLinks(url) {
-    let allLinks = url.replace(/(.*pic\.lvmama\.com)|(.*\.lvjs\.com\.cn)/, "http://pic.lvmama.com");
-    allLinks = allLinks + '\n' + allLinks.replace(/.*pic.lvmama.com/, "http://s1.lvjs.com.cn") + '\n' + allLinks.replace(/.*pic.lvmama.com/, "http://s2.lvjs.com.cn") + '\n' + allLinks.replace(/.*pic.lvmama.com/, "http://s3.lvjs.com.cn") + '\n' + allLinks.replace(/.*pic.lvmama.com/, "https://pics.lvjs.com.cn") + '\n';
+    let allLinks = url.replace(/(pic\.lvmama\.com)|(s\d\.lvjs\.com\.cn)/, "pic.lvmama.com");
+    allLinks = allLinks + '\n' + allLinks.replace(/pic.lvmama.com/, "s1.lvjs.com.cn") + '\n' + allLinks.replace(/pic.lvmama.com/, "s2.lvjs.com.cn") + '\n' + allLinks.replace(/pic.lvmama.com/, "s3.lvjs.com.cn") + '\n';
     return allLinks + '\n';
 }
