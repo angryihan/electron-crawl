@@ -51,7 +51,7 @@ function toText(arr) {
 }
 
 function generateAllLinks(url) {
-    let allLinks = url.replace(/(.*pic\.lvmama\.com)|(.*.lvjs\.com\.cn)/, "http://pic.lvmama.com");
+    let allLinks = url.replace(/(.*pic\.lvmama\.com)|(.*\.lvjs\.com\.cn)/, "http://pic.lvmama.com");
     let allLinkArr = [];
     allLinkArr.push(allLinks + '\n');
     allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s1.lvjs.com.cn") + '\n');
