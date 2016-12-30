@@ -9,11 +9,11 @@ var option = {
 }
 
 module.exports = {
-    getLinks: function(urlString, keyword, cb) {
+    getLinks: function (urlString, keyword, cb) {
         var linkArray = [];
-        var pattern = new RegExp("(pic\.lvmama\.com.*" + keyword + ")|(s\\d\.lvjs\.com\.cn.*" + keyword + ")");
+        var pattern = new RegExp("(.*pic\.lvmama\.com.*" + keyword + ")|(.*\.lvjs\.com\.cn.*" + keyword + ")");
         var urlArray = urlString ? urlString.split(',') : channelUrl.channelUrlArray;
-        async.eachSeries(urlArray, crawlLinks, function(err) {
+        async.eachSeries(urlArray, crawlLinks, function (err) {
             if (err) {
                 console.log(err);
             } else {
@@ -23,11 +23,11 @@ module.exports = {
 
         function crawlLinks(url, callback) {
             option.url = url;
-            request(option, function(error, res, body) {
+            request(option, function (error, res, body) {
                 if (!error && res.statusCode == 200) {
                     var $ = cheerio.load(body);
                     var $resources = $('link[rel="stylesheet"], script');
-                    $resources.each(function(index, ele) {
+                    $resources.each(function (index, ele) {
                         var link = $(ele).attr('href') ? $(ele).attr('href') : $(ele).attr('src');
                         if (pattern.test(link)) {
                             linkArray.push(link);
@@ -51,7 +51,12 @@ function toText(arr) {
 }
 
 function generateAllLinks(url) {
-    var allLinks = url.replace(/(pic\.lvmama\.com)|(s\d\.lvjs\.com\.cn)/, "pic.lvmama.com");
-    allLinks = allLinks + '\n' + allLinks.replace(/pic.lvmama.com/, "s1.lvjs.com.cn") + '\n' + allLinks.replace(/pic.lvmama.com/, "s2.lvjs.com.cn") + '\n' + allLinks.replace(/pic.lvmama.com/, "s3.lvjs.com.cn") + '\n';
-    return allLinks + '\n';
+    var allLinks = url.replace(/(.*pic\.lvmama\.com)|(.*.lvjs\.com\.cn)/, "http://pic.lvmama.com");
+    var allLinkArr = [];
+    allLinkArr.push(allLinks + '\n');
+    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s1.lvjs.com.cn") + '\n');
+    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s2.lvjs.com.cn") + '\n');
+    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s3.lvjs.com.cn") + '\n');
+    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "https://pics.lvjs.com.cn") + '\n');
+    return allLinkArr.join('') + '\n';
 }
