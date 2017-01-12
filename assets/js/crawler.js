@@ -10,14 +10,14 @@ let option = {
 
 module.exports = {
     getLinks: function (urlString, keyword, cb) {
-        let linkArray = [];
+        let linkSet = new Set();
         let pattern = new RegExp("(.*pic\.lvmama\.com.*" + keyword + ")|(.*\.lvjs\.com\.cn.*" + keyword + ")");
         let urlArray = urlString ? urlString.split(',') : channelUrl.channelUrlArray;
         async.eachSeries(urlArray, crawlLinks, function (err) {
             if (err) {
                 console.log(err);
             } else {
-                cb(linkArray.length ? toText(linkArray) : '未找到对应信息');
+                cb(linkSet.size ? toText(linkSet) : '未找到对应信息');
             }
         });
 
@@ -30,7 +30,7 @@ module.exports = {
                     $resources.each(function (index, ele) {
                         let link = $(ele).attr('href') ? $(ele).attr('href') : $(ele).attr('src');
                         if (pattern.test(link)) {
-                            linkArray.push(link);
+                            linkSet.add(link.replace(/(.*pic\.lvmama\.com)|(.*\.lvjs\.com\.cn)/, "http://pic.lvmama.com"));
                         }
                     });
                     callback(null);
@@ -42,21 +42,20 @@ module.exports = {
     }
 };
 
-function toText(arr) {
+function toText(linkSet) {
     let text = '';
-    for (let i = 0; i < arr.length; i++) {
-        text += generateAllLinks(arr[i]);
+    for (let link of linkSet) {
+        text += generateAllLinks(link);
     }
     return text;
 }
 
 function generateAllLinks(url) {
-    let allLinks = url.replace(/(.*pic\.lvmama\.com)|(.*\.lvjs\.com\.cn)/, "http://pic.lvmama.com");
-    let allLinkArr = [];
-    allLinkArr.push(allLinks + '\n');
-    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s1.lvjs.com.cn") + '\n');
-    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s2.lvjs.com.cn") + '\n');
-    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "http://s3.lvjs.com.cn") + '\n');
-    allLinkArr.push(allLinks.replace(/.*pic.lvmama.com/, "https://pics.lvjs.com.cn") + '\n');
-    return allLinkArr.join('') + '\n';
+    let allLinksArr = [];
+    allLinksArr.push(url + '\n');
+    allLinksArr.push(url.replace(/.*pic.lvmama.com/, "http://s1.lvjs.com.cn") + '\n');
+    allLinksArr.push(url.replace(/.*pic.lvmama.com/, "http://s2.lvjs.com.cn") + '\n');
+    allLinksArr.push(url.replace(/.*pic.lvmama.com/, "http://s3.lvjs.com.cn") + '\n');
+    allLinksArr.push(url.replace(/.*pic.lvmama.com/, "https://pics.lvjs.com.cn") + '\n');
+    return allLinksArr.join('') + '\n';
 }
