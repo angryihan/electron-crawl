@@ -1,4 +1,11 @@
 module.exports = {
+    picPathArray: [
+        'http://pic.lvmama.com',
+        'http://s1.lvjs.com.cn',
+        'http://s2.lvjs.com.cn',
+        'http://s3.lvjs.com.cn',
+        'https://pics.lvjs.com.cn'
+    ],
     channelUrlArray: [
         'http://www.lvmama.com/',
         'http://www.lvmama.com/abroad/',
