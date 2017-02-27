@@ -13,7 +13,7 @@ module.exports = {
         let linkSet = new Set();
         let pattern = new RegExp("(.*pic\.lvmama\.com.*" + keyword + ")|(.*\.lvjs\.com\.cn.*" + keyword + ")");
         let urlArray = urlString ? urlString.split(',') : urlVariable.channelUrlArray;
-        async.eachSeries(urlArray, crawlLinks, function (err) {
+        async.each(urlArray, crawlLinks, function (err) {
             if (err) {
                 console.log(err);
             } else {
